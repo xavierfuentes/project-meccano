@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Signup = () => (
-  <div>
-    Sign Up
-  </div>
+  <article>
+    Sign Up Page
+  </article>
 )
 
 export default Signup;
