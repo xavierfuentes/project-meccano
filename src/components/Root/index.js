@@ -7,6 +7,10 @@ import {
 import Home from '../../pages/Home'
 import UserManager from '../../modules/UserManager'
 
+import './reset.css';
+import 'sanitize.css/sanitize.css';
+import 'semantic-ui-css/semantic.css';
+
 const Root = () => (
   <article>
     <nav>
