@@ -1,13 +1,12 @@
-// import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
+import { routerReducer } from 'react-router-redux'
 
 import rootReducer from './Root/reducer';
 
 export default function createReducer(asyncReducers) {
   return combineReducers({
-    // route: routeReducer,
+    route: routerReducer,
     root: rootReducer,
-    // language: languageProviderReducer,
     ...asyncReducers,
   });
 }
