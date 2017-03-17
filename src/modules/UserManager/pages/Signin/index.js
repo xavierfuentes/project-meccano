@@ -6,8 +6,8 @@ const Signin = () => (
   <article>
     Sign In Page
 
-    <SigninForm/>
+    <SigninForm />
   </article>
-)
+);
 
 export default Signin;

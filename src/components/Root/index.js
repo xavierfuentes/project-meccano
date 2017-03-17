@@ -1,11 +1,8 @@
 import React from 'react';
-import {
-  Route,
-  Link
-} from 'react-router-dom'
+import { Route, Link } from 'react-router-dom';
 
-import Home from '../../pages/Home'
-import UserManager from '../../modules/UserManager'
+import Home from '../../pages/Home';
+import UserManager from '../../modules/UserManager';
 
 import './reset.css';
 import 'sanitize.css/sanitize.css';
@@ -22,10 +19,10 @@ const Root = () => (
     </nav>
 
     <main>
-      <Route exact path='/' component={Home}/>
-      <Route path='/user' component={UserManager}/>
+      <Route exact path="/" component={Home} />
+      <Route path="/user" component={UserManager} />
     </main>
   </article>
-)
+);
 
 export default Root;

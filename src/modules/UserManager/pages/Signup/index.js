@@ -4,6 +4,6 @@ const Signup = () => (
   <article>
     Sign Up Page
   </article>
-)
+);
 
 export default Signup;

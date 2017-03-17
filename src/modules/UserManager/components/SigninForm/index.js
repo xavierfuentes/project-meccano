@@ -4,6 +4,6 @@ const SigninForm = () => (
   <article>
     Sign In Form
   </article>
-)
+);
 
 export default SigninForm;
