@@ -12,7 +12,7 @@ const UserManager = ({ match }) => (
 );
 
 UserManager.propTypes = {
-  match: React.any,
+  match: React.PropTypes.object,
 };
 
 export default UserManager;
