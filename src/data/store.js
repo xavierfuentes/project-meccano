@@ -1,15 +1,15 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
-// import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 
-import createReducer from './reducers';
+import reducers from './reducers';
+import sagas from './../data/sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const configureStore = (initialState = {}, history) => {
-  const middlewares = [
-    // sagaMiddleware,
-    routerMiddleware(history),
-  ];
+  const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   const enhancers = [applyMiddleware(...middlewares)];
 
@@ -22,11 +22,10 @@ const configureStore = (initialState = {}, history) => {
     : compose;
   /* eslint-enable */
 
-  const store = createStore(createReducer(), fromJS(initialState), composeEnhancers(...enhancers));
+  const store = createStore(reducers, fromJS(initialState), composeEnhancers(...enhancers));
 
   // Extensions
-  // store.runSaga = sagaMiddleware.run;
-  store.asyncReducers = {}; // Async reducer registry
+  sagaMiddleware.run(sagas);
 
   return store;
 };

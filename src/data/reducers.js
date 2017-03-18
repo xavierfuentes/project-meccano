@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux-immutable';
 import { routerReducer } from 'react-router-redux';
+import { reducer as form } from 'redux-form/immutable';
 
-import rootReducer from './Root/reducer';
+import rootReducer from './Root';
+import userManagerReducer from '../modules/UserManager/data/reducers';
 
-const createReducer = asyncReducers => {
-  return combineReducers({
-    route: routerReducer,
-    root: rootReducer,
-    ...asyncReducers,
-  });
-};
-
-export default createReducer;
+export default combineReducers({
+  form,
+  root: rootReducer,
+  route: routerReducer,
+  userManager: userManagerReducer,
+});
