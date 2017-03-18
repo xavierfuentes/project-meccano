@@ -5337,6 +5337,13 @@ react-addons-create-fragment@^15.3.2:
     fbjs "^0.8.4"
     object-assign "^4.1.0"
 
+react-addons-test-utils@^15.4.2:
+  version "15.4.2"
+  resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.4.2.tgz#93bcaa718fcae7360d42e8fb1c09756cc36302a2"
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
+
 react-color@^2.4.3:
   version "2.11.4"
   resolved "https://registry.yarnpkg.com/react-color/-/react-color-2.11.4.tgz#43f64630e5d47a243f6bd35300224c9c69c73921"

@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 
-import Root from './Root';
+import Root from '../index';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Root />, div);
+describe('<Root />', () => {
+  it('renders without crashing', () => {
+    shallow(<Root />);
+  });
 });

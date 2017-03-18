@@ -32,6 +32,7 @@
     "jest-enzyme": "^2.1.2",
     "lint-staged": "^3.4.0",
     "prettier": "^0.22.0",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.5",
     "react-storybook-addon-chapters": "^1.1.0",
     "storybook-host": "^1.0.14",
