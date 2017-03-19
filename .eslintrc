@@ -1,6 +1,6 @@
 {
   "extends": [
-    "eslint:recommended",
+    "airbnb",
     "plugin:react/recommended",
     "prettier",
     "prettier/react"
