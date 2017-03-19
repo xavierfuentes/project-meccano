@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form/immutable';
 
 const SignupForm = ({ handleSubmit, signupRequest }) => (
-  <form onSubmit={handleSubmit(signupRequest)}>
+  <form onSubmit={() => handleSubmit(signupRequest)}>
     <div>
       <label htmlFor="email">Email</label>
       <Field name="email" component="input" type="email" />

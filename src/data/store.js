@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { fromJS } from 'immutable';
+import Immutable, { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 
@@ -8,7 +8,7 @@ import sagas from './../data/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const configureStore = (initialState = {}, history) => {
+const configureStore = (initialState = Immutable.Map(), history) => {
   const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   const enhancers = [applyMiddleware(...middlewares)];
