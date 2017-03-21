@@ -1,12 +1,10 @@
 {
   "extends": [
     "airbnb",
-    "plugin:react/recommended",
     "prettier",
     "prettier/react"
   ],
   "plugins": [
-    "react",
     "prettier"
   ],
   "parserOptions": {
@@ -24,6 +22,8 @@
     "jest": true
   },
   "rules": {
+    "consistent-return": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "prettier/prettier": ["error", {
       "printWidth": 120,
       "trailingComma": "es5",

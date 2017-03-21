@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Immutable from 'immutable';
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createBrowserHistory'; // eslint-disable-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 

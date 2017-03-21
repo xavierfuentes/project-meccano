@@ -4,21 +4,27 @@ import { connect } from 'react-redux';
 import SignupForm from '../../components/SignupForm';
 import { signupRequest } from '../../data/Signup/actions';
 
-const Signup = ({ signupRequest }) => (
+const Signup = ({ dispatchSignupRequest }) => (
   <article>
     Sign Up Page
 
-    <SignupForm signupRequest={signupRequest} />
+    <SignupForm handleSignup={dispatchSignupRequest} />
   </article>
 );
 
 Signup.propTypes = {
-  signupRequest: React.PropTypes.func,
+  dispatchSignupRequest: React.PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => ({ // eslint-disable-line
   // signup: state.userManager.signup,
-  signupRequest,
 });
 
-export default connect(mapStateToProps, { signupRequest })(Signup);
+// const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
+  dispatchSignupRequest: values => {
+    dispatch(signupRequest(values));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
