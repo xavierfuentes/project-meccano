@@ -1,8 +1,11 @@
 import * as types from './types';
 
-export const setUser = token => ({
+export const setUser = response => ({
   type: types.USER_SET,
-  payload: { token },
+  payload: {
+    user: response.user,
+    token: response.token,
+  },
 });
 
 export const unsetUser = () => ({

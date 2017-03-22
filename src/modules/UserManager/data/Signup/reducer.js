@@ -26,7 +26,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return state.set('requesting', false).set('successful', true).set(
         'messages',
         fromJS({
-          body: `Successfully created account for ${payload.response.email}`,
+          body: `Successfully created account for ${payload.response.user.email}`,
           time: new Date(),
         })
       );

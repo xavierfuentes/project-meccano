@@ -4,19 +4,13 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { API_SIGNUP_URL } from './constants';
 import * as types from './types';
 import * as actions from './actions';
+import * as userActions from '../User/actions';
 
 function signupApi({ email, password }) {
-  return axios
-    .post(API_SIGNUP_URL, { email, password })
-    .then(
-      response =>
-        // todo: response handler
-        response
-    )
-    .catch(error => {
-      // todo: error handler
-      throw error;
-    });
+  return axios.post(API_SIGNUP_URL, { email, password }).then(response => response.data).catch(error => {
+    // todo: error handler
+    throw error;
+  });
 }
 
 function* signupSaga({ payload }) {
@@ -24,6 +18,7 @@ function* signupSaga({ payload }) {
     const response = yield call(signupApi, payload);
 
     yield put(actions.signupRequestSucceeded(response));
+    yield put(userActions.setUser(response));
   } catch (error) {
     yield put(actions.signupRequestFailed(error));
   }
