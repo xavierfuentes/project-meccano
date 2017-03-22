@@ -12,7 +12,7 @@ function signupApi({ email, password }) {
   });
 }
 
-function* signupSaga({ payload }) {
+function* signupFlow({ payload }) {
   try {
     const response = yield call(signupApi, payload);
 
@@ -23,7 +23,7 @@ function* signupSaga({ payload }) {
 }
 
 function* signupWatcher() {
-  yield takeLatest(types.SIGNUP_REQUESTING, signupSaga);
+  yield takeLatest(types.SIGNUP_REQUESTING, signupFlow);
 }
 
 export default signupWatcher;
