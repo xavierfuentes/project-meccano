@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux-immutable';
 import { routerReducer } from 'react-router-redux';
-import { reducer as form } from 'redux-form/immutable';
+import { reducer as formReducer } from 'redux-form/immutable';
+import { firebaseStateReducer } from 'react-redux-firebase';
 
 import rootReducer from './Root';
 import userManagerReducer from '../modules/UserManager/data/reducers';
 
 export default combineReducers({
-  form,
+  firebase: firebaseStateReducer,
+  form: formReducer,
   root: rootReducer,
   route: routerReducer,
   userManager: userManagerReducer,
