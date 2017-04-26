@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => {
@@ -28,12 +29,12 @@ const SignupForm = ({ handleSignup, error, handleSubmit, pristine, reset, submit
 );
 
 SignupForm.propTypes = {
-  error: React.PropTypes.string,
-  handleSignup: React.PropTypes.func.isRequired,
-  handleSubmit: React.PropTypes.func.isRequired,
-  pristine: React.PropTypes.bool,
-  reset: React.PropTypes.func.isRequired,
-  submitting: React.PropTypes.bool,
+  error: PropTypes.string,
+  handleSignup: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  pristine: PropTypes.bool,
+  reset: PropTypes.func.isRequired,
+  submitting: PropTypes.bool,
 };
 
 SignupForm.defaultProps = {

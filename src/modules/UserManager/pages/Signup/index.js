@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import SignupForm from '../../components/SignupForm';
@@ -13,7 +14,7 @@ const Signup = ({ dispatchSignupRequest }) => (
 );
 
 Signup.propTypes = {
-  dispatchSignupRequest: React.PropTypes.func.isRequired,
+  dispatchSignupRequest: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({ // eslint-disable-line
