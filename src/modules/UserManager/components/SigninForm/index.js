@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form/immutable';
 
+const validate = values => {
+  const errors = {};
+  if (!values.email) errors.email = 'Required';
+  if (!values.password) errors.password = 'Required';
+  return errors;
+};
+
 const renderField = ({ input, label, type, meta: { touched, error } }) => {
   const jsxField = (
     <div>
@@ -16,8 +23,8 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => {
   return jsxField;
 };
 
-const SigninForm = ({ handleSignin, error, handleSubmit, pristine, reset, submitting }) => (
-  <form onSubmit={handleSubmit(handleSignin)}>
+const SigninForm = ({ error, handleSubmit, pristine, reset, submitting }) => (
+  <form onSubmit={handleSubmit}>
     <Field name="email" type="text" component={renderField} label="Email" />
     <Field name="password" type="password" component={renderField} label="Password" />
     {error && <strong>{error}</strong>}
@@ -30,7 +37,6 @@ const SigninForm = ({ handleSignin, error, handleSubmit, pristine, reset, submit
 
 SigninForm.propTypes = {
   error: PropTypes.string,
-  handleSignin: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
   reset: PropTypes.func.isRequired,
@@ -44,5 +50,6 @@ SigninForm.defaultProps = {
 };
 
 export default reduxForm({
-  form: 'signup',
+  form: 'signin',
+  validate,
 })(SigninForm);

@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
 import Signin from '../Signin';
-import Signup from '../Signup';
+import { SIGNIN_PATH } from '../../data/Signin/constants';
 
 const UserIndex = ({ match }) => (
   <article>
-    <Route exact path={`${match.url}/signin`} component={Signin} />
-    <Route exact path={`${match.url}/signup`} component={Signup} />
+    <Route exact path={`${match.url}${SIGNIN_PATH}`} component={Signin} />
   </article>
 );
 
@@ -20,7 +19,7 @@ UserIndex.propTypes = {
 
 UserIndex.defaultProps = {
   match: {
-    ur: '/user',
+    url: '/user',
   },
 };
 
