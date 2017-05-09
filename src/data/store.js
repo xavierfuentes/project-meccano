@@ -2,7 +2,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import Immutable, { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
-import { reactReduxFirebase } from 'react-redux-firebase';
+import thunk from 'redux-thunk';
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 
 import reducers from './reducers';
 import sagas from './../data/sagas';
@@ -18,15 +19,15 @@ const firebaseConfig = {
 };
 
 // react-redux-firebase options
-const config = {
+const firebaseOptions = {
   userProfile: 'users', // firebase root where user profiles are stored
   enableLogging: false, // enable/disable Firebase's database logging
 };
 
 const configureStore = (initialState = Immutable.Map(), history) => {
-  const middlewares = [sagaMiddleware, routerMiddleware(history)];
+  const middlewares = [sagaMiddleware, routerMiddleware(history), thunk.withExtraArgument(getFirebase)];
 
-  const enhancers = [applyMiddleware(...middlewares), reactReduxFirebase(firebaseConfig, config)];
+  const enhancers = [applyMiddleware(...middlewares), reactReduxFirebase(firebaseConfig, firebaseOptions)];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
