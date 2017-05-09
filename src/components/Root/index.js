@@ -16,6 +16,7 @@ const Root = () => (
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/user/signin">Sign in</Link></li>
+        <li><Link to="/user/signup">Sign up</Link></li>
         <li><Link to="/user/profile">Profile</Link></li>
       </ul>
     </nav>

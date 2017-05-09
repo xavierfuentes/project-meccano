@@ -1,0 +1,24 @@
+import * as types from './types';
+
+export const signupRequestSucceeded = authData => ({
+  type: types.SIGNUP_SUCCESS,
+  payload: { authData },
+});
+
+export const signupRequestFailed = error => ({
+  type: types.SIGNUP_ERROR,
+  payload: { error },
+});
+
+export const signup = signupData => (dispatch, getState, getFirebase) => {
+  const firebase = getFirebase();
+  const signupDataJSON = signupData.toJS();
+  firebase
+    .createUser(signupDataJSON)
+    .then(authData => {
+      dispatch(signupRequestSucceeded(authData));
+    })
+    .catch(error => {
+      dispatch(signupRequestFailed(error));
+    });
+};

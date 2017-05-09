@@ -11,17 +11,17 @@ const initialState = fromJS({
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.SIGNIN_REQUESTING: {
+    case types.SIGNUP_REQUESTING: {
       const message = fromJS({
-        body: 'Signing in...',
+        body: 'Signing up...',
         time: new Date(),
       });
       return state.set('requesting', true).set('messages', state.get('messages').push(message));
     }
 
-    case types.SIGNIN_SUCCESS: {
+    case types.SIGNUP_SUCCESS: {
       const message = fromJS({
-        body: `${payload.authData.email} successfully signed in`,
+        body: `Successfully created account for ${payload.authData.email}`,
         time: new Date(),
       });
       return state
@@ -30,7 +30,7 @@ const reducer = (state = initialState, { type, payload }) => {
         .set('messages', state.get('messages').push(message));
     }
 
-    case types.SIGNIN_ERROR: {
+    case types.SIGNUP_ERROR: {
       const error = {
         body: payload.error.toString(),
         time: new Date(),

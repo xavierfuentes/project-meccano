@@ -23,19 +23,19 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => {
   return jsxField;
 };
 
-const SigninForm = ({ error, handleSubmit, pristine, reset, submitting }) => (
+const SignupForm = ({ error, handleSubmit, pristine, reset, submitting }) => (
   <form onSubmit={handleSubmit}>
     <Field name="email" type="text" component={renderField} label="Email" />
     <Field name="password" type="password" component={renderField} label="Password" />
     {error && <strong>{error}</strong>}
     <div>
-      <button type="submit" disabled={submitting}>Sign In</button>
+      <button type="submit" disabled={submitting}>Sign Up</button>
       <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
     </div>
   </form>
 );
 
-SigninForm.propTypes = {
+SignupForm.propTypes = {
   error: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
@@ -43,13 +43,13 @@ SigninForm.propTypes = {
   submitting: PropTypes.bool,
 };
 
-SigninForm.defaultProps = {
+SignupForm.defaultProps = {
   error: null,
   pristine: true,
   submitting: false,
 };
 
 export default reduxForm({
-  form: 'signin',
+  form: 'signup',
   validate,
-})(SigninForm);
+})(SignupForm);
