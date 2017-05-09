@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import Immutable, { fromJS } from 'immutable';
-import { routerMiddleware } from 'react-router-redux';
 // import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
@@ -12,10 +11,9 @@ import reducers from './reducers';
 
 // const sagaMiddleware = createSagaMiddleware();
 
-const configureStore = (initialState = Immutable.Map(), history) => {
+const configureStore = (initialState = Immutable.Map()) => {
   const middlewares = [
     // sagaMiddleware,
-    routerMiddleware(history),
     thunk.withExtraArgument(getFirebase),
   ];
 
