@@ -5,24 +5,12 @@ import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 
+import { firebaseConfig, firebaseOptions } from '../helpers/firebase';
+
 import reducers from './reducers';
 // import sagas from './../data/sagas';
 
 // const sagaMiddleware = createSagaMiddleware();
-
-// Firebase config
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FB_API_KEY,
-  authDomain: process.env.REACT_APP_FB_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FB_DB_URL,
-  storageBucket: process.env.REACT_APP_FB_STORAGE_BUCKET,
-};
-
-// react-redux-firebase options
-const firebaseOptions = {
-  userProfile: 'users', // firebase root where user profiles are stored
-  enableLogging: false, // enable/disable Firebase's database logging
-};
 
 const configureStore = (initialState = Immutable.Map(), history) => {
   const middlewares = [
