@@ -8,6 +8,6 @@ import userManagerReducer from '../modules/UserManager/data/reducers';
 export default combineReducers({
   firebase: firebaseStateReducer,
   form: formReducer,
-  route: routerReducer,
+  routing: routerReducer,
   userManager: userManagerReducer,
 });
