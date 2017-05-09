@@ -1,37 +1,26 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { firebaseConnect, pathToJS } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 
-const Signin = ({ firebase }) => {
-  const handleLogin = loginData => {
-    firebase.login(loginData);
-  };
-  const providerLogin = provider => handleLogin({ provider });
+import { signin } from '../../data/Signin/actions';
 
-  return (
-    <article>
-      Sign In Page
-      <div>
-        <button onClick={() => providerLogin('google')}>Google</button>
-      </div>
-    </article>
-  );
-};
+const Signin = ({ handleSignin }) => (
+  <article>
+    Sign In Page
+    <div>
+      <button onClick={() => handleSignin('google')}>Google</button>
+    </div>
+  </article>
+);
 
 Signin.propTypes = {
-  firebase: PropTypes.shape({
-    login: PropTypes.func.isRequired,
-  }).isRequired,
+  handleSignin: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ firebase }) => ({
-  auth: pathToJS(firebase, 'auth'),
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+  handleSignin: provider => dispatch(signin(provider)),
 });
 
-// const mapDispatchToProps = dispatch => ({});
-const mapDispatchToProps = null;
-
-const connectedSignIn = firebaseConnect()(Signin);
-
-export default connect(mapStateToProps, mapDispatchToProps)(connectedSignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(Signin);
