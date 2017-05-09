@@ -16,8 +16,8 @@ export const signin = provider => (dispatch, getState, getFirebase) => {
     .login({
       provider,
     })
-    .then(response => {
-      dispatch(signinRequestSucceeded(response));
+    .then(authData => {
+      dispatch(signinRequestSucceeded(authData));
     })
     .catch(error => {
       dispatch(signinRequestFailed(error));
