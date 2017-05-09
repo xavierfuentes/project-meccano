@@ -1,14 +1,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import Immutable, { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
-import createSagaMiddleware from 'redux-saga';
+// import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 
 import reducers from './reducers';
-import sagas from './../data/sagas';
+// import sagas from './../data/sagas';
 
-const sagaMiddleware = createSagaMiddleware();
+// const sagaMiddleware = createSagaMiddleware();
 
 // Firebase config
 const firebaseConfig = {
@@ -25,7 +25,11 @@ const firebaseOptions = {
 };
 
 const configureStore = (initialState = Immutable.Map(), history) => {
-  const middlewares = [sagaMiddleware, routerMiddleware(history), thunk.withExtraArgument(getFirebase)];
+  const middlewares = [
+    // sagaMiddleware,
+    routerMiddleware(history),
+    thunk.withExtraArgument(getFirebase),
+  ];
 
   const enhancers = [applyMiddleware(...middlewares), reactReduxFirebase(firebaseConfig, firebaseOptions)];
 
@@ -41,7 +45,7 @@ const configureStore = (initialState = Immutable.Map(), history) => {
   const store = createStore(reducers, fromJS(initialState), composeEnhancers(...enhancers));
 
   // Extensions
-  sagaMiddleware.run(sagas);
+  // sagaMiddleware.run(sagas);
 
   return store;
 };
