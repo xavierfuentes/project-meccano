@@ -3,9 +3,10 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import SignupForm from '../../components/SignupForm';
+import { signin } from '../../data/Signin/actions';
 import { signup } from '../../data/Signup/actions';
 
-const Signup = ({ handleSignup }) => (
+const Signup = ({ handleSignin, handleSignup }) => (
   <article>
     Sign Up Page
 
@@ -14,18 +15,20 @@ const Signup = ({ handleSignup }) => (
     </div>
 
     <div>
-      <button onClick={() => handleSignup({ provider: 'google' })}>Google</button>
+      <button onClick={() => handleSignin({ provider: 'google' })}>Google</button>
     </div>
   </article>
 );
 
 Signup.propTypes = {
+  handleSignin: PropTypes.func.isRequired,
   handleSignup: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
+  handleSignin: signinData => dispatch(signin(signinData)),
   handleSignup: signupData => dispatch(signup(signupData)),
 });
 

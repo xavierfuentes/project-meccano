@@ -10,15 +10,4 @@ export const signupRequestFailed = error => ({
   payload: { error },
 });
 
-export const signup = signupData => (dispatch, getState, getFirebase) => {
-  const firebase = getFirebase();
-  const signupDataJSON = signupData.toJS();
-  firebase
-    .createUser(signupDataJSON)
-    .then(authData => {
-      dispatch(signupRequestSucceeded(authData));
-    })
-    .catch(error => {
-      dispatch(signupRequestFailed(error));
-    });
-};
+export const signup = () => {};
