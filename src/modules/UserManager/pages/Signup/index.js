@@ -27,9 +27,9 @@ Signup.propTypes = {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
-  handleSignin: signinData => dispatch(signin(signinData)),
-  handleSignup: signupData => dispatch(signup(signupData)),
-});
+const mapDispatchToProps = {
+  handleSignin: signin,
+  handleSignup: signup,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

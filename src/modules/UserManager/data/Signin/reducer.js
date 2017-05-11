@@ -11,7 +11,7 @@ const initialState = fromJS({
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case types.SIGNIN_REQUESTING: {
+    case types.SIGNIN_REQUEST: {
       const message = fromJS({
         body: 'Signing in...',
         time: new Date(),

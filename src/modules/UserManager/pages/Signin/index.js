@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import SigninForm from '../../components/SigninForm';
-import { signin } from '../../data/Signin/actions';
+import { signinRequest } from '../../data/Signin/actions';
 
 const Signin = ({ handleSignin }) => (
   <article>
@@ -25,8 +25,8 @@ Signin.propTypes = {
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
-  handleSignin: signinData => dispatch(signin(signinData)),
-});
+const mapDispatchToProps = {
+  handleSignin: signinRequest,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);
