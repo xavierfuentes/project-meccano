@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import Immutable, { fromJS } from 'immutable';
 import createSagaMiddleware from 'redux-saga';
 
 import reducers from './reducers';
@@ -7,9 +6,8 @@ import sagas from './../data/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const configureStore = (initialState = Immutable.Map()) => {
+const configureStore = initialState => {
   const middlewares = [sagaMiddleware];
-
   const enhancers = [applyMiddleware(...middlewares)];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
@@ -21,7 +19,7 @@ const configureStore = (initialState = Immutable.Map()) => {
     : compose;
   /* eslint-enable */
 
-  const store = createStore(reducers, fromJS(initialState), composeEnhancers(...enhancers));
+  const store = createStore(reducers, initialState, composeEnhancers(...enhancers));
 
   // Extensions
   sagaMiddleware.run(sagas);
