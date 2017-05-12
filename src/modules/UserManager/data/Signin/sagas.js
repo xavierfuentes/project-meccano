@@ -8,7 +8,6 @@ import * as actions from './actions';
 
 function signIn(formData) {
   const { email, password } = formData.toJS();
-
   return signInWithEmailAndPassword(email, password).then(user => ({ user })).catch(error => ({ error }));
 }
 

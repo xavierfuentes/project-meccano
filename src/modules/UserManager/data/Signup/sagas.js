@@ -1,14 +1,14 @@
 // import * as firebase from 'firebase';
 import { call, fork, put, take } from 'redux-saga/effects';
 
-// import { signUpWithEmailAndPassword } from '../../../../helpers/firebase';
+import { createUserWithEmailAndPassword } from '../../../../helpers/firebase';
 
 import * as types from './types';
 import * as actions from './actions';
 
-function signUp() {
-  // const { email, password } = formData.toJS();
-  // return signUpWithEmailAndPassword(email, password).then(user => ({ user })).catch(error => ({ error }));
+function signUp(formData) {
+  const { email, password } = formData.toJS();
+  return createUserWithEmailAndPassword(email, password).then(user => ({ user })).catch(error => ({ error }));
 }
 
 function* handleRequestSignup() {

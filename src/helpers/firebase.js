@@ -13,6 +13,10 @@ firebase.initializeApp(firebaseConfig);
 // export const auth = firebase.auth();
 // export const database = firebase.database();
 
+export function createUserWithEmailAndPassword(email, password) {
+  return firebase.auth().createUserWithEmailAndPassword(email, password);
+}
+
 export function signInWithEmailAndPassword(email, password) {
   return firebase.auth().signInWithEmailAndPassword(email, password);
 }
