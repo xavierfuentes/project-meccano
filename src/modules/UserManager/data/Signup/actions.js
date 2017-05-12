@@ -5,9 +5,9 @@ export const signupRequest = formData => ({
   payload: { formData },
 });
 
-export const signupRequestSucceeded = authData => ({
+export const signupRequestSucceeded = user => ({
   type: types.SIGNUP_SUCCESS,
-  payload: { authData },
+  payload: { user },
 });
 
 export const signupRequestFailed = error => ({

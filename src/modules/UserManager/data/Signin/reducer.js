@@ -21,7 +21,7 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case types.SIGNIN_SUCCESS: {
       const message = fromJS({
-        body: `${payload.authData.email} successfully signed in`,
+        body: `${payload.user.email} successfully signed in`,
         time: new Date(),
       });
       return state
