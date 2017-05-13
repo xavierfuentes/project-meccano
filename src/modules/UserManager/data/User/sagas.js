@@ -1,4 +1,3 @@
-// import * as firebase from 'firebase';
 import { call, fork, put, take } from 'redux-saga/effects';
 
 import { createUserWithEmailAndPassword } from '../../../../helpers/firebase';
@@ -14,7 +13,7 @@ function signUp(formData) {
 function* handleRequestSignup() {
   // eslint-disable-next-line no-constant-condition
   while (true) {
-    const { payload } = yield take(types.SIGNUP_REQUEST);
+    const { payload } = yield take(types.SIGNIN_SUCCESS);
     const { user, error } = yield call(signUp, payload.formData);
 
     if (user && !error) {

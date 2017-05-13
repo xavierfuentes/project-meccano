@@ -17,7 +17,19 @@ const reducer = (state = initialState, { type }) => {
       return state.set('requesting', false).set('successful', true);
     }
 
-    case types.SIGNIN_ERROR: {
+    case types.SIGNIN_FAILURE: {
+      return state.set('requesting', false).set('successful', false);
+    }
+
+    case types.SIGNUP_REQUEST: {
+      return state.set('requesting', true);
+    }
+
+    case types.SIGNUP_SUCCESS: {
+      return state.set('requesting', false).set('successful', true);
+    }
+
+    case types.SIGNUP_FAILURE: {
       return state.set('requesting', false).set('successful', false);
     }
 

@@ -3,8 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import SignupForm from '../../components/SignupForm';
-import { signinRequest } from '../../data/Signin/actions';
-import { signupRequest } from '../../data/Signup/actions';
+import { signinRequest, signupRequest } from '../../data/Auth/actions';
 
 const Signup = ({ handleSignin, handleSignup }) => (
   <article>
