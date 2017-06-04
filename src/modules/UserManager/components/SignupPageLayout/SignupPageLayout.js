@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-import SignupForm from '../../components/SignupForm';
+import SignupForm from '../../containers/SignupForm/SignupForm';
 
 const SignupPageLayout = ({ handleSignin, handleSignup }) =>
   <article>

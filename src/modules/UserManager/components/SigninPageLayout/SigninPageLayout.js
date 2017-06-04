@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import { PROFILE_PATH } from '../../data/Auth/constants';
 
-import SigninForm from '../../components/SigninForm';
+import SigninForm from '../../containers/SigninForm/SigninForm';
 
 const SigninPageLayout = ({ handleSignin, isAuthenticated }) => {
   const handleSigninWithForm = handleSignin;
