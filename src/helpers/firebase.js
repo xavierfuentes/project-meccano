@@ -10,15 +10,26 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const database = firebase.database();
+const auth = firebase.auth();
+// const database = firebase.database();
 
 export function createUserWithEmailAndPassword(email, password) {
-  return firebase.auth().createUserWithEmailAndPassword(email, password);
+  return auth.createUserWithEmailAndPassword(email, password);
 }
 
-export function signInWithEmailAndPassword(email, password) {
-  return firebase.auth().signInWithEmailAndPassword(email, password);
+export function signinWithEmailAndPassword(email, password) {
+  return auth.signInWithEmailAndPassword(email, password);
+}
+
+export function signinWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  provider.addScope('profile');
+  provider.addScope('email');
+  return auth.signInWithPopup(provider);
+}
+
+export function signout() {
+  return auth.signOut();
 }
 
 // class FirebaseApi {

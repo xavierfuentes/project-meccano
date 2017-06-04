@@ -1,13 +1,28 @@
 import { call, fork, put, take } from 'redux-saga/effects';
 
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../../../../helpers/firebase';
+import {
+  createUserWithEmailAndPassword,
+  signinWithEmailAndPassword,
+  signinWithGoogle,
+} from '../../../../helpers/firebase';
 
 import * as types from './types';
 import * as actions from './actions';
 
 function signIn(formData) {
+  const provider = Object.prototype.hasOwnProperty.call(formData, 'provider') && formData.provider;
+
+  if (provider) {
+    switch (formData.provider) {
+      case 'google':
+        return signinWithGoogle();
+      default:
+        throw new Error(`The provider ${provider} is incorrect`);
+    }
+  }
+
   const { email, password } = formData.toJS();
-  return signInWithEmailAndPassword(email, password).then(user => ({ user })).catch(error => ({ error }));
+  return signinWithEmailAndPassword(email, password).then(user => ({ user })).catch(error => ({ error }));
 }
 
 function signUp(formData) {
