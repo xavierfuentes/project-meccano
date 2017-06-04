@@ -29,6 +29,7 @@
       "printWidth": 120,
       "trailingComma": "es5",
       "singleQuote": true
-    }]
+    }],
+    "no-param-reassign": 0
   }
 }
