@@ -1,11 +1,9 @@
 import { call, fork, put, take } from 'redux-saga/effects';
 
-import history from '../../../../helpers/history';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from '../../../../helpers/firebase';
 
 import * as types from './types';
 import * as actions from './actions';
-import * as constants from './constants';
 
 function signIn(formData) {
   const { email, password } = formData.toJS();
@@ -25,7 +23,6 @@ function* handleRequestSignin() {
 
     if (user && !error) {
       yield put(actions.signinRequestSucceeded(user));
-      history.push(constants.SIGNIN_SUCCESS_REDIRECT);
     } else {
       yield put(actions.signinRequestFailed(error));
     }

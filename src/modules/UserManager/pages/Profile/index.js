@@ -1,9 +1,8 @@
 import React from 'react';
 
-const Profile = () => (
+const Profile = () =>
   <article>
     This is the profile
-  </article>
-);
+  </article>;
 
 export default Profile;

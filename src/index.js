@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Immutable from 'immutable';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router-dom';
-
-import history from './helpers/history';
+import { createBrowserHistory } from 'history';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import configureStore from './data/store';
 import Root from './components/Root';
@@ -14,7 +13,7 @@ const store = configureStore(initialState);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <Router history={createBrowserHistory()}>
       <Root />
     </Router>
   </Provider>,

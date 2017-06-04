@@ -4,6 +4,9 @@ import { userManagerStateSelector } from '../selectors';
 
 export const authStateSelector = createSelector(userManagerStateSelector, state => state.get('auth'));
 
-export const authenticatedUserSelector = createSelector(authStateSelector, state => state.get('user'));
+export const authenticatedUserSelector = createSelector(
+  authStateSelector,
+  state => state.getIn(['user', 'id']) !== null
+);
 
-export const userAuthenticatedSelector = createSelector(authenticatedUserSelector, user => user && !!user.get('id'));
+export const userIsAuthenticatedSelector = createSelector(authStateSelector, authState => authState.get('successful'));
