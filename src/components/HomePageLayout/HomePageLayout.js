@@ -1,8 +1,8 @@
 import React from 'react';
 
-const HomePageLayout = () =>
+const DashboardPageLayout = () =>
   <article>
     Welcome to the best CRM!
   </article>;
 
-export default HomePageLayout;
+export default DashboardPageLayout;

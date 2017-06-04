@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import PrivateRoute from '../../containers/PrivateRoute';
+import PrivateRoute from '../../containers/PrivateRoute/PrivateRoute';
 import SigninPage from '../../containers/SigninPage/SigninPage';
 import SignupPage from '../../containers/SignupPage/SignupPage';
 import ProfilePageLayout from '../../components/ProfilePageLayout/ProfilePageLayout';

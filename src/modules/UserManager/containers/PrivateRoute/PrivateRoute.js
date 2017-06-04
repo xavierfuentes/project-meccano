@@ -22,12 +22,16 @@ PrivateRoute.propTypes = {
     PropTypes.instanceOf(React.Component),
   ]).isRequired,
   isAuthenticated: PropTypes.bool,
-  location: PropTypes.string,
+  location: PropTypes.shape({
+    hash: PropTypes.string,
+    key: PropTypes.string,
+    pathname: PropTypes.string,
+    search: PropTypes.string,
+  }).isRequired,
 };
 
 PrivateRoute.defaultProps = {
   isAuthenticated: false,
-  location: '',
 };
 
 const mapStateToProps = state => ({
