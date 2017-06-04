@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Profile = () =>
+const ProfilePageLayout = () =>
   <article>
     This is the profile
   </article>;
 
-export default Profile;
+export default ProfilePageLayout;

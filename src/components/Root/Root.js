@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
-import HomePage from '../../pages/Home';
-import UserIndex from '../../modules/UserManager/pages/UserIndex';
+import HomePageLayout from '../HomePageLayout/HomePageLayout';
+import UserManagerPageLayout from '../../modules/UserManager/components/UserManagerPageLayout/UserManagerPageLayout';
 
 /* eslint-disable import/first */
 import 'sanitize.css/sanitize.css';
@@ -23,8 +23,8 @@ const Root = () =>
 
     <main>
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/user" component={UserIndex} />
+        <Route exact path="/" component={HomePageLayout} />
+        <Route path="/user" component={UserManagerPageLayout} />
       </Switch>
     </main>
   </article>;

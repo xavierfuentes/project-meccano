@@ -1,15 +1,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { PROFILE_PATH } from '../../data/Auth/constants';
 
 import SigninForm from '../../components/SigninForm';
-import { signinRequest } from '../../data/Auth/actions';
-import { userIsAuthenticatedSelector } from '../../data/Auth/selectors';
 
-const Signin = ({ handleSignin, isAuthenticated }) => {
+const SigninPageLayout = ({ handleSignin, isAuthenticated }) => {
   const handleSigninWithForm = handleSignin;
 
   const handleSigninWithProvider = event => {
@@ -32,21 +29,13 @@ const Signin = ({ handleSignin, isAuthenticated }) => {
       </article>;
 };
 
-Signin.propTypes = {
+SigninPageLayout.propTypes = {
   handleSignin: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 };
 
-Signin.defaultProps = {
+SigninPageLayout.defaultProps = {
   isAuthenticated: false,
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: userIsAuthenticatedSelector(state),
-});
-
-const mapDispatchToProps = {
-  handleSignin: signinRequest,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default SigninPageLayout;
