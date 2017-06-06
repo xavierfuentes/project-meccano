@@ -2,22 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const AppNavBarLayout = ({ isAuthenticated }) =>
+import { SIGNIN_PATH, SIGNUP_PATH } from '../../modules/UserManager/data/Auth/constants';
+
+const AppNavBarLayout = ({ handleSignout, isAuthenticated, currentUser }) =>
   <nav>
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      {isAuthenticated
-        ? <li><Link to="/user/signout">Sign out</Link></li>
-        : <li><Link to="/user/signin">Sign in</Link></li>}
-    </ul>
+    {isAuthenticated
+      ? <article>
+          Hello {currentUser.email}! <button onClick={handleSignout}>Sign out</button>
+        </article>
+      : <ul>
+          <li><Link to={SIGNIN_PATH}>Sign in</Link></li>
+          <li><Link to={SIGNUP_PATH}>Sign up</Link></li>
+        </ul>}
   </nav>;
 
 AppNavBarLayout.propTypes = {
-  isAuthenticated: PropTypes.bool,
+  currentUser: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+  }),
+  handleSignout: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 AppNavBarLayout.defaultProps = {
-  isAuthenticated: false,
+  currentUser: null,
 };
 
 export default AppNavBarLayout;

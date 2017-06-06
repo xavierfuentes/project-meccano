@@ -4,12 +4,13 @@ import {
   createUserWithEmailAndPassword,
   signinWithEmailAndPassword,
   signinWithGoogle,
+  signout,
 } from '../../../../helpers/firebase';
 
 import * as types from './types';
 import * as actions from './actions';
 
-function signIn(formData) {
+function signin(formData) {
   const provider = Object.prototype.hasOwnProperty.call(formData, 'provider') && formData.provider;
 
   if (provider) {
@@ -25,7 +26,7 @@ function signIn(formData) {
   return signinWithEmailAndPassword(email, password).then(user => ({ user })).catch(error => ({ error }));
 }
 
-function signUp(formData) {
+function signup(formData) {
   const { email, password } = formData.toJS();
   return createUserWithEmailAndPassword(email, password).then(user => ({ user })).catch(error => ({ error }));
 }
@@ -34,7 +35,7 @@ function* handleRequestSignin() {
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const { payload } = yield take(types.SIGNIN_REQUEST);
-    const { user, error } = yield call(signIn, payload.formData);
+    const { user, error } = yield call(signin, payload.formData);
 
     if (user && !error) {
       yield put(actions.signinRequestSucceeded(user));
@@ -44,11 +45,20 @@ function* handleRequestSignin() {
   }
 }
 
+function* handleRequestSignout() {
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    yield take(types.SIGNOUT_REQUEST);
+    yield call(signout);
+    yield put(actions.signoutRequestSucceeded());
+  }
+}
+
 function* handleRequestSignup() {
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const { payload } = yield take(types.SIGNUP_REQUEST);
-    const { user, error } = yield call(signUp, payload.formData);
+    const { user, error } = yield call(signup, payload.formData);
 
     if (user && !error) {
       yield put(actions.signupRequestSucceeded(user));
@@ -60,5 +70,6 @@ function* handleRequestSignup() {
 
 export default function* AuthSaga() {
   yield fork(handleRequestSignin);
+  yield fork(handleRequestSignout);
   yield fork(handleRequestSignup);
 }

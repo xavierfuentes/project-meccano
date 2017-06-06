@@ -15,6 +15,15 @@ export const signinRequestFailed = error => ({
   payload: { error },
 });
 
+export const signoutRequest = () => ({
+  type: types.SIGNOUT_REQUEST,
+});
+
+export const signoutRequestSucceeded = result => ({
+  type: types.SIGNOUT_SUCCESS,
+  payload: { result },
+});
+
 export const signupRequest = formData => ({
   type: types.SIGNUP_REQUEST,
   payload: { formData },

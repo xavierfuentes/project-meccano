@@ -22,6 +22,14 @@ const reducer = (state = initialState, { type, payload }) => {
       return state.set('requesting', false).set('successful', false);
     }
 
+    case types.SIGNOUT_REQUEST: {
+      return state.set('requesting', true);
+    }
+
+    case types.SIGNOUT_SUCCESS: {
+      return state.set('requesting', false).set('successful', false).set('user', null);
+    }
+
     case types.SIGNUP_REQUEST: {
       return state.set('requesting', true);
     }

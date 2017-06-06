@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { userIsAuthenticatedSelector } from '../../data/Auth/selectors';
+import { isAuthenticatedSelector } from '../../data/Auth/selectors';
 import { SIGNIN_PATH } from '../../data/Auth/constants';
 
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) =>
@@ -35,7 +35,7 @@ PrivateRoute.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: userIsAuthenticatedSelector(state),
+  isAuthenticated: isAuthenticatedSelector(state),
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

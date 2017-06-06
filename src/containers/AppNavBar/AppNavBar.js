@@ -1,12 +1,16 @@
 import { connect } from 'react-redux';
 
-import { userIsAuthenticatedSelector } from '../../modules/UserManager/data/Auth/selectors';
+import { signoutRequest } from '../../modules/UserManager/data/Auth/actions';
+import { authenticatedUserSelector, isAuthenticatedSelector } from '../../modules/UserManager/data/Auth/selectors';
 import AppNavBarLayout from '../../components/AppNavBarLayout/AppNavBarLayout';
 
 const mapStateToProps = state => ({
-  isAuthenticated: userIsAuthenticatedSelector(state),
+  currentUser: authenticatedUserSelector(state),
+  isAuthenticated: isAuthenticatedSelector(state),
 });
 
-const mapDispatchToProps = null;
+const mapDispatchToProps = {
+  handleSignout: signoutRequest,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppNavBarLayout);
