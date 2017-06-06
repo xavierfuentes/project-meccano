@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import AppNavBar from '../../containers/AppNavBar/AppNavBar';
 import UserManagerPageLayout from '../../modules/UserManager/components/UserManagerPageLayout/UserManagerPageLayout';
 import { USER_MANAGER_PATH } from '../../modules/UserManager/data/constants';
 
@@ -13,8 +12,6 @@ import 'semantic-ui-css/semantic.css';
 
 const Root = () =>
   <article>
-    <AppNavBar />
-
     <Switch>
       <Route path={USER_MANAGER_PATH} component={UserManagerPageLayout} />
 

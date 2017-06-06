@@ -10,17 +10,13 @@ import { USER_MANAGER_PATH } from '../../data/constants';
 import { SIGNIN_PATH, SIGNUP_PATH, PROFILE_PATH, SIGNIN_SUCCESS_REDIRECT } from '../../data/Auth/constants';
 
 const UserManagerPageLayout = () =>
-  <article>
-    User container
+  <Switch>
+    <Route path={SIGNIN_PATH} component={SigninPage} />
+    <Route path={SIGNUP_PATH} component={SignupPage} />
+    <PrivateRoute path={PROFILE_PATH} component={ProfilePageLayout} />
 
-    <Switch>
-      <Route path={SIGNIN_PATH} component={SigninPage} />
-      <Route path={SIGNUP_PATH} component={SignupPage} />
-      <PrivateRoute path={PROFILE_PATH} component={ProfilePageLayout} />
-
-      <Redirect from={USER_MANAGER_PATH} to={SIGNIN_SUCCESS_REDIRECT} />
-    </Switch>
-  </article>;
+    <Redirect from={USER_MANAGER_PATH} to={SIGNIN_SUCCESS_REDIRECT} />
+  </Switch>;
 
 UserManagerPageLayout.propTypes = {};
 

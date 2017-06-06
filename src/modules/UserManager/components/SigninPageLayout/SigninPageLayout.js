@@ -1,8 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-import { PROFILE_PATH } from '../../data/Auth/constants';
+import { PROFILE_PATH, SIGNUP_PATH } from '../../data/Auth/constants';
 
 import SigninForm from '../../containers/SigninForm/SigninForm';
 
@@ -17,15 +17,21 @@ const SigninPageLayout = ({ handleSignin, isAuthenticated }) => {
   return isAuthenticated
     ? <Redirect to={{ pathname: PROFILE_PATH }} />
     : <article>
-        Sign In Page
+        Sign in to your account
 
-        <div>
-          <SigninForm onSubmit={handleSigninWithForm} />
-        </div>
-
-        <div>
+        <section>
           <button onClick={handleSigninWithProvider} data-provider="google">Google</button>
-        </div>
+        </section>
+
+        <span>or</span>
+
+        <section>
+          <SigninForm onSubmit={handleSigninWithForm} />
+        </section>
+
+        <section>
+          Need an account? <Link to={SIGNUP_PATH}>Sign up</Link>
+        </section>
       </article>;
 };
 
