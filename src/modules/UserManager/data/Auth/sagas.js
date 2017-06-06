@@ -35,10 +35,10 @@ function* handleRequestSignin() {
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const { payload } = yield take(types.SIGNIN_REQUEST);
-    const { user, error } = yield call(signin, payload.formData);
+    const { credential, error, user } = yield call(signin, payload.formData);
 
     if (user && !error) {
-      yield put(actions.signinRequestSucceeded(user));
+      yield put(actions.signinRequestSucceeded(credential, user));
     } else {
       yield put(actions.signinRequestFailed(error));
     }

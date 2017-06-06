@@ -3,6 +3,7 @@ import { fromJS } from 'immutable';
 import * as types from './types';
 
 const initialState = fromJS({
+  credential: null,
   requesting: false,
   successful: false,
   user: null,
@@ -15,7 +16,11 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case types.SIGNIN_SUCCESS: {
-      return state.set('requesting', false).set('successful', true).set('user', payload.user);
+      return state
+        .set('requesting', false)
+        .set('successful', true)
+        .set('credential', payload.credential)
+        .set('user', payload.user);
     }
 
     case types.SIGNIN_FAILURE: {
@@ -27,7 +32,7 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case types.SIGNOUT_SUCCESS: {
-      return state.set('requesting', false).set('successful', false).set('user', null);
+      return state.set('requesting', false).set('successful', false).set('credential', null).set('user', null);
     }
 
     case types.SIGNUP_REQUEST: {
