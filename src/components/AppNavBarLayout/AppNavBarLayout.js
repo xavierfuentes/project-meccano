@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { SIGNIN_PATH, SIGNUP_PATH } from '../../modules/UserManager/data/Auth/constants';
+import { SIGNIN_PATH } from '../../modules/UserManager/data/Auth/constants';
 
 const AppNavBarLayout = ({ handleSignout, isAuthenticated, currentUser }) =>
   <nav>
@@ -12,7 +12,6 @@ const AppNavBarLayout = ({ handleSignout, isAuthenticated, currentUser }) =>
         </article>
       : <ul>
           <li><Link to={SIGNIN_PATH}>Sign in</Link></li>
-          <li><Link to={SIGNUP_PATH}>Sign up</Link></li>
         </ul>}
   </nav>;
 
