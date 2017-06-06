@@ -25,7 +25,8 @@ export function signinWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.addScope('profile');
   provider.addScope('email');
-  return auth.signInWithPopup(provider);
+  auth.signInWithRedirect(provider);
+  return auth.getRedirectResult();
 }
 
 export function signout() {

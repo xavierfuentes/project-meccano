@@ -9,13 +9,14 @@ import {
 
 import * as types from './types';
 import * as actions from './actions';
+import { PROVIDER_ID_GOOGLE } from './constants';
 
 function signin(formData) {
   const provider = Object.prototype.hasOwnProperty.call(formData, 'provider') && formData.provider;
 
   if (provider) {
     switch (formData.provider) {
-      case 'google':
+      case PROVIDER_ID_GOOGLE:
         return signinWithGoogle();
       default:
         throw new Error(`The provider ${provider} is incorrect`);

@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 
-import { PROFILE_PATH, SIGNUP_PATH } from '../../data/Auth/constants';
+import { PROFILE_PATH, PROVIDER_ID_GOOGLE, SIGNUP_PATH } from '../../data/Auth/constants';
 
 import SigninForm from '../../containers/SigninForm/SigninForm';
 
@@ -20,7 +20,7 @@ const SigninPageLayout = ({ handleSignin, isAuthenticated }) => {
         Sign in to your account
 
         <section>
-          <button onClick={handleSigninWithProvider} data-provider="google">Google</button>
+          <button onClick={handleSigninWithProvider} data-provider={PROVIDER_ID_GOOGLE}>Google</button>
         </section>
 
         <span>or</span>
@@ -30,6 +30,7 @@ const SigninPageLayout = ({ handleSignin, isAuthenticated }) => {
         </section>
 
         <section>
+          <Link to="">Forgot password?</Link>
           Need an account? <Link to={SIGNUP_PATH}>Sign up</Link>
         </section>
       </article>;
