@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 
-import { signinRequest, signupRequest } from '../../data/Auth/actions';
+import { signupRequest } from '../../data/Auth/actions';
 import SignupPageLayout from '../../components/SignupPageLayout/SignupPageLayout';
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = {
-  handleSignin: signinRequest,
   handleSignup: signupRequest,
 };
 
