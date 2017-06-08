@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { SIGNIN_PATH } from '../../modules/UserManager/data/Auth/constants';
 
-const AppNavBarLayout = ({ handleSignout, isAuthenticated, currentUser }) =>
+const MainNavigationLayout = ({ handleSignout, isAuthenticated, currentUser }) =>
   <nav>
     {isAuthenticated
       ? <article>
@@ -15,7 +15,7 @@ const AppNavBarLayout = ({ handleSignout, isAuthenticated, currentUser }) =>
         </ul>}
   </nav>;
 
-AppNavBarLayout.propTypes = {
+MainNavigationLayout.propTypes = {
   currentUser: PropTypes.shape({
     email: PropTypes.string.isRequired,
   }),
@@ -23,8 +23,8 @@ AppNavBarLayout.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
 };
 
-AppNavBarLayout.defaultProps = {
+MainNavigationLayout.defaultProps = {
   currentUser: null,
 };
 
-export default AppNavBarLayout;
+export default MainNavigationLayout;
