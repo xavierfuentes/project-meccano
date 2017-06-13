@@ -5,7 +5,7 @@ export const signinRequest = formData => ({
   payload: { formData },
 });
 
-export const signinRequestSucceeded = (credential = null, user) => ({
+export const signinRequestSucceeded = ({ credential, user }) => ({
   type: types.SIGNIN_SUCCESS,
   payload: { credential, user },
 });

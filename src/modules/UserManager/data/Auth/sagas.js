@@ -39,7 +39,7 @@ function* handleRequestSignin() {
     const { credential, error, user } = yield call(signin, payload.formData);
 
     if (user && !error) {
-      yield put(actions.signinRequestSucceeded(credential, user));
+      yield put(actions.signinRequestSucceeded({ credential, user }));
     } else {
       yield put(actions.signinRequestFailed(error));
     }

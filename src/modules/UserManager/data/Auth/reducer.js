@@ -4,13 +4,12 @@ import * as types from './types';
 
 const initialState = fromJS({
   credential: null,
-  operationType: null,
   requesting: false,
   successful: false,
   user: null,
 });
 
-const reducer = (state = initialState, { type, payload }) => {
+const reducer = (state = initialState, { type, payload } = {}) => {
   switch (type) {
     case types.SIGNIN_REQUEST: {
       return state.set('requesting', true);
@@ -18,11 +17,10 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case types.SIGNIN_SUCCESS: {
       return state
-        .set('credential', payload.credential)
-        .set('operationType', payload.operationType)
+        .set('credential', fromJS(payload.credential))
         .set('requesting', false)
         .set('successful', true)
-        .set('user', payload.user);
+        .set('user', fromJS(payload.user));
     }
 
     case types.SIGNIN_FAILURE: {
@@ -34,12 +32,7 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case types.SIGNOUT_SUCCESS: {
-      return state
-        .set('credential', null)
-        .set('operationType', null)
-        .set('requesting', false)
-        .set('successful', false)
-        .set('user', null);
+      return initialState;
     }
 
     case types.SIGNUP_REQUEST: {

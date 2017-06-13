@@ -25,15 +25,14 @@ export function signinWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   // https://developers.google.com/identity/protocols/googlescopes#peoplev1
   // Gmail
-  provider.addScope('https://www.googleapis.com/auth/gmail.readonly');
-  provider.addScope('https://www.googleapis.com/auth/gmail.send');
+  // provider.addScope('https://www.googleapis.com/auth/gmail.readonly');
+  // provider.addScope('https://www.googleapis.com/auth/gmail.send');
   // People
   provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
   provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
   provider.addScope('https://www.googleapis.com/auth/userinfo.email');
 
-  auth.signInWithRedirect(provider);
-  return auth.getRedirectResult();
+  return auth.signInWithPopup(provider);
 }
 
 export function signout() {
