@@ -1,9 +1,12 @@
-import { combineReducers } from 'redux-immutable';
-import { reducer as formReducer } from 'redux-form/immutable';
+import { combineReducers } from 'redux';
+import { routerForBrowser } from 'redux-little-router';
 
-import userManagerReducer from '../modules/UserManager/data/reducers';
+import routes from './routes';
+import uiReducer from './ui/reducer';
+
+const { reducer: routerReducer } = routerForBrowser({ routes });
 
 export default combineReducers({
-  form: formReducer,
-  userManager: userManagerReducer,
+  router: routerReducer,
+  ui: uiReducer,
 });

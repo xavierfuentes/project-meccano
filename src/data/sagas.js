@@ -1,7 +1,5 @@
-import { fork } from 'redux-saga/effects';
-
-import userManagerSaga from '../modules/UserManager/data/sagas';
+// import { fork } from 'redux-saga/effects';
 
 export default function* sagas() {
-  yield fork(userManagerSaga);
+  yield console.log('hello world!');
 }
