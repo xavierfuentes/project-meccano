@@ -4,12 +4,12 @@ import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 
 import reducers from './reducers';
-import sagas from './../data/sagas';
+import sagas from './sagas';
 
 const configureStore = (router, initialState) => {
   const sagaMiddleware = createSagaMiddleware();
   const routerMiddleware = router5Middleware(router);
-  const loggerMiddleware = createLogger();
+  const loggerMiddleware = createLogger({ collapsed: true });
   const middlewares = [loggerMiddleware, routerMiddleware, sagaMiddleware];
   const enhancers = [applyMiddleware(...middlewares)];
 

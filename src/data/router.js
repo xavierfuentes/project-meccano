@@ -6,7 +6,7 @@ import routes from './routes';
 
 export default function configureRouter() {
   const router = createRouter(routes, {
-    defaultRoute: 'inbox',
+    defaultRoute: 'dashboard',
   })
     // Plugins
     .usePlugin(loggerPlugin)
