@@ -1,19 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { RouterProvider } from 'react-router5';
 
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './data/store';
+import configureRouter from './data/router';
 
 import Root from './components/Root/Root';
 
 const initialState = {};
-const store = configureStore(initialState);
+const router = configureRouter();
+const store = configureStore(router, initialState);
 
-ReactDOM.render(
+const wrappedApp = (
   <Provider store={store}>
-    <Root />
-  </Provider>,
-  document.getElementById('root')
+    <RouterProvider router={router}>
+      <Root />
+    </RouterProvider>
+  </Provider>
 );
+
+router.start(() => {
+  ReactDOM.render(wrappedApp, document.getElementById('root'));
+});
+
 registerServiceWorker();

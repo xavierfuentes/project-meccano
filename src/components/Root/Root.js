@@ -8,7 +8,7 @@ import 'semantic-ui-css/semantic.css';
 
 const Root = () =>
   <article>
-    Root
+    <h1>Hello world!</h1>
   </article>;
 
 export default Root;

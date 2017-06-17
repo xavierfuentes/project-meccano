@@ -1,13 +1,16 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { router5Middleware } from 'redux-router5';
 import createSagaMiddleware from 'redux-saga';
+import { createLogger } from 'redux-logger';
 
 import reducers from './reducers';
 import sagas from './../data/sagas';
 
-const sagaMiddleware = createSagaMiddleware();
-
-const configureStore = initialState => {
-  const middlewares = [sagaMiddleware];
+const configureStore = (router, initialState) => {
+  const sagaMiddleware = createSagaMiddleware();
+  const routerMiddleware = router5Middleware(router);
+  const loggerMiddleware = createLogger();
+  const middlewares = [loggerMiddleware, routerMiddleware, sagaMiddleware];
   const enhancers = [applyMiddleware(...middlewares)];
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose

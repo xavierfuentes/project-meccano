@@ -1,12 +1,9 @@
 import { combineReducers } from 'redux';
-import { routerForBrowser } from 'redux-little-router';
+import { router5Reducer } from 'redux-router5';
 
-import routes from './routes';
 import uiReducer from './ui/reducer';
 
-const { reducer: routerReducer } = routerForBrowser({ routes });
-
 export default combineReducers({
-  router: routerReducer,
+  router: router5Reducer,
   ui: uiReducer,
 });
