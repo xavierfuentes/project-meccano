@@ -6,9 +6,13 @@ import './reset.css'; // some more rules to fix default behaviour
 import 'semantic-ui-css/semantic.css';
 /* eslint-enable import/first */
 
+import Main from '../../containers/Main/Main';
+
 const Root = () =>
-  <article>
+  <div>
     <h1>Hello world!</h1>
-  </article>;
+
+    <Main />
+  </div>;
 
 export default Root;
