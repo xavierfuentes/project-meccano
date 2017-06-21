@@ -1,5 +1,5 @@
 import React from 'react';
 
-const NotFound = () => <article>Purposely Not found (not a bug)</article>;
+const NotFound = () => <article>You should go to the Dashboard instead...</article>;
 
 export default NotFound;

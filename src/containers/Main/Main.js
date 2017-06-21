@@ -1,20 +1,20 @@
-import React, { createElement } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { routeNodeSelector } from 'redux-router5';
+import { startsWithSegment } from 'router5.helpers';
 
 import Dashboard from '../../components/Dashboard/Dashboard';
 import NotFound from '../../components/NotFound/NotFound';
 
-const components = {
-  dashboard: Dashboard,
-  login: <div>login</div>,
-};
-
 const Main = ({ route }) => {
-  const segment = route ? route.name.split('.')[0] : undefined;
+  const matches = startsWithSegment(route.name);
 
-  return createElement(components[segment] || NotFound);
+  if (matches('dashboard')) {
+    return <Dashboard />;
+  }
+
+  return <NotFound />;
 };
 
 Main.propTypes = {
@@ -23,4 +23,14 @@ Main.propTypes = {
   }).isRequired,
 };
 
-export default connect(() => routeNodeSelector(''))(Main);
+const mapStateToProps = state => {
+  const selector = routeNodeSelector('');
+
+  return {
+    ...selector(state),
+  };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

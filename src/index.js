@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import configureStore from './data/store';
 import configureRouter from './data/router';
 
-import Root from './components/Root/Root';
+import Root from './containers/Root/Root';
 
 const initialState = {};
 const router = configureRouter();

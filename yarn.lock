@@ -3136,7 +3136,7 @@ ignore@^3.2.0:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.3.tgz#432352e57accd87ab3110e82d3fea0e47812156d"
 
-immutable@^3.0.0, immutable@^3.8.1:
+immutable@^3.0.0:
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
 
@@ -5636,10 +5636,6 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-immutable@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/redux-immutable/-/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
-
 redux-logger@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
@@ -5868,6 +5864,10 @@ route-node@1.8.2:
   dependencies:
     path-parser "2.0.2"
     search-params "~1.3.0"
+
+router5.helpers@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/router5.helpers/-/router5.helpers-1.2.0.tgz#53dc98d1bc3ed3f40b3e8e54fe59dc163e7a3210"
 
 router5.transition-path@4.0.1, router5.transition-path@~4.0.1:
   version "4.0.1"
