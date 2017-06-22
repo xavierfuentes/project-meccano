@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Nav from '../../containers/Nav/Nav';
+import Nav from '../../components/Nav/Nav';
 import Main from '../../containers/Main/Main';
 
 const Root = () =>

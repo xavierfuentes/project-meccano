@@ -4,14 +4,19 @@ import { connect } from 'react-redux';
 import { routeNodeSelector } from 'redux-router5';
 import { startsWithSegment } from 'router5.helpers';
 
-import Dashboard from '../../components/Dashboard/Dashboard';
 import NotFound from '../../components/NotFound/NotFound';
+import Dashboard from '../../components/Dashboard/Dashboard';
+import Properties from '../../components/Properties/Properties';
 
 const Main = ({ route }) => {
   const matches = startsWithSegment(route.name);
 
   if (matches('dashboard')) {
     return <Dashboard />;
+  }
+
+  if (matches('properties')) {
+    return <Properties />;
   }
 
   return <NotFound />;
