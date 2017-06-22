@@ -1,9 +1,11 @@
 import React from 'react';
 
+import Link from '../../components/Link/Link';
+
 const Nav = () =>
   <nav>
-    <article>Menu</article>
-    <article>Dashboard</article>
+    <Link name="dashboard">Dashboard</Link>
+    <Link name="properties">Properties</Link>
   </nav>;
 
 export default Nav;
