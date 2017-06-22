@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Nav from '../../components/Nav/Nav';
+import NavBar from '../../components/NavBar/NavBar';
 import Main from '../../containers/Main/Main';
 
 const Root = () =>
   <div>
     <aside>
-      <Nav />
+      <NavBar />
     </aside>
 
     <main>
