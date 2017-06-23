@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 
 // Firebase config
 const firebaseConfig = {
@@ -8,35 +8,34 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FB_STORAGE_BUCKET,
 };
 
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-// const database = firebase.database();
+export const firebaseApp = firebase.initializeApp(firebaseConfig);
+export const firebaseAuth = firebaseApp.auth();
+export const firebaseDb = firebaseApp.database();
 
 export function createUserWithEmailAndPassword(email, password) {
-  return auth.createUserWithEmailAndPassword(email, password);
+  return firebaseAuth.createUserWithEmailAndPassword(email, password);
 }
 
 export function signinWithEmailAndPassword(email, password) {
-  return auth.signInWithEmailAndPassword(email, password);
+  return firebaseAuth.signInWithEmailAndPassword(email, password);
 }
 
 export function signinWithGoogle() {
-  const provider = new firebase.auth.GoogleAuthProvider();
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
   // https://developers.google.com/identity/protocols/googlescopes#peoplev1
   // Gmail
   // provider.addScope('https://www.googleapis.com/auth/gmail.readonly');
   // provider.addScope('https://www.googleapis.com/auth/gmail.send');
   // People
-  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-  provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
-  provider.addScope('https://www.googleapis.com/auth/userinfo.email');
+  googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  googleProvider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+  googleProvider.addScope('https://www.googleapis.com/auth/userinfo.email');
 
-  return auth.signInWithPopup(provider);
+  return firebaseAuth.signInWithPopup(googleProvider);
 }
 
 export function signout() {
-  return auth.signOut();
+  return firebaseAuth.signOut();
 }
 
 // class FirebaseApi {
