@@ -1,5 +1,7 @@
-// import { fork } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
+
+import authSagas from './auth/sagas';
 
 export default function* sagas() {
-  yield console.log('hello world!');
+  yield all([fork(authSagas)]);
 }
