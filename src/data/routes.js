@@ -1,13 +1,19 @@
+export const SIGNIN_ROUTE = { name: 'signin', path: '/signin' };
+export const SIGNUP_ROUTE = { name: 'signup', path: '/signup' };
+export const DASHBOARD_ROUTE = { name: 'dashboard', path: '/dashboard' };
+export const PROPERTIES_ROUTE = { name: 'properties', path: '/properties' };
+export const PROPERTIES_DETAIL_ROUTE = { name: 'properties.detail', path: '/properties:id' };
+
 export default [
-  { name: 'signin', path: '/signin' },
-  { name: 'signup', path: '/signup' },
-  { name: 'dashboard', path: '/dashboard' },
+  SIGNIN_ROUTE,
+  SIGNUP_ROUTE,
+  DASHBOARD_ROUTE,
   // { name: 'leads', path: '/leads' },
   // { name: 'leads.detail', path: '/leads:id' },
   // { name: 'people', path: '/people' },
   // { name: 'people.detail', path: '/people:id' },
-  { name: 'properties', path: '/properties' },
-  { name: 'properties.detail', path: '/properties:id' },
+  PROPERTIES_ROUTE,
+  PROPERTIES_DETAIL_ROUTE,
   // { name: 'companies', path: '/companies' },
   // { name: 'companies.detail', path: '/companies:id' },
   // { name: 'opportunities', path: '/opportunities' },
