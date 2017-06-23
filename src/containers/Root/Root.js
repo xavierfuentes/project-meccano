@@ -10,8 +10,9 @@ import './reset.css'; // some more rules to fix default behaviour
 import 'semantic-ui-css/semantic.css';
 /* eslint-enable import/first */
 
+import { SIGNIN_ROUTE, SIGNUP_ROUTE } from '../../data/routes';
 import App from '../../components/App/App';
-import Signin from '../../components/Signin/Signin';
+import Signin from '../../containers/Signin/Signin';
 import Signup from '../../components/Signup/Signup';
 
 class Root extends Component {
@@ -25,17 +26,20 @@ class Root extends Component {
     const matches = startsWithSegment(route.name);
 
     if (isSignedin) {
-      if (matches('signup') || matches('signin')) {
+      if (matches(SIGNUP_ROUTE.name) || matches(SIGNIN_ROUTE.name)) {
         this.router.navigate('dashboard', {}, { replace: true });
       }
       return <App />;
     }
 
-    if (matches('signup')) {
+    if (matches(SIGNUP_ROUTE.name)) {
       return <Signup />;
     }
 
-    this.router.navigate('signin', {}, { replace: true });
+    if (!matches(SIGNIN_ROUTE.name)) {
+      this.router.navigate(SIGNIN_ROUTE.name, {}, { replace: true });
+    }
+
     return <Signin />;
   }
 }
@@ -48,7 +52,7 @@ Root.propTypes = {
 };
 
 Root.defaultProps = {
-  isSignedin: true,
+  isSignedin: false,
 };
 
 Root.contextTypes = {

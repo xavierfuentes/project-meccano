@@ -12,6 +12,8 @@ export const firebaseApp = firebase.initializeApp(firebaseConfig);
 export const firebaseAuth = firebaseApp.auth();
 export const firebaseDb = firebaseApp.database();
 
+export const PROVIDER_ID_GOOGLE = 'google';
+
 export function createUserWithEmailAndPassword(email, password) {
   return firebaseAuth.createUserWithEmailAndPassword(email, password);
 }
