@@ -1,5 +1,3 @@
-// import { fork } from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
 
-export default function* uiSaga() {
-  yield console.log('ui saga'); // eslint-disable-line no-console
-}
+export default all([]);

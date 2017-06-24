@@ -42,6 +42,4 @@ export function* loginFlow() {
   }
 }
 
-export default function* root() {
-  yield all([fork(loginFlow)]);
-}
+export default all([fork(loginFlow)]);
