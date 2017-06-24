@@ -11,6 +11,7 @@ import 'semantic-ui-css/semantic.css';
 /* eslint-enable import/first */
 
 import { SIGNIN_ROUTE, SIGNUP_ROUTE } from '../../data/routes';
+import * as authSelectors from '../../data/auth/selectors';
 import App from '../../components/App/App';
 import Signin from '../../containers/Signin/Signin';
 import Signup from '../../components/Signup/Signup';
@@ -27,17 +28,13 @@ class Root extends Component {
 
     if (isSignedin) {
       if (matches(SIGNUP_ROUTE.name) || matches(SIGNIN_ROUTE.name)) {
-        this.router.navigate('dashboard', {}, { replace: true });
+        this.router.navigate('dashboard');
       }
       return <App />;
     }
 
     if (matches(SIGNUP_ROUTE.name)) {
       return <Signup />;
-    }
-
-    if (!matches(SIGNIN_ROUTE.name)) {
-      this.router.navigate(SIGNIN_ROUTE.name, {}, { replace: true });
     }
 
     return <Signin />;
@@ -62,10 +59,11 @@ Root.contextTypes = {
 };
 
 const mapStateToProps = state => {
-  const selector = routeNodeSelector('');
+  const routeSelector = routeNodeSelector('');
 
   return {
-    ...selector(state),
+    isSignedin: authSelectors.isSignedin(state),
+    ...routeSelector(state),
   };
 };
 
