@@ -22,6 +22,10 @@ export function signinWithEmailAndPassword(email, password) {
   return firebaseAuth.signInWithEmailAndPassword(email, password);
 }
 
+export function signinWithCredential(credential) {
+  return firebaseAuth.signInWithCredential(credential);
+}
+
 export function signinWithGoogle() {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   // https://developers.google.com/identity/protocols/googlescopes#peoplev1

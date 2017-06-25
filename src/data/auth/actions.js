@@ -31,6 +31,7 @@ export const signin = ({ username, password, provider }) => dispatch => {
         .then(result => {
           // todo: maybe map the user before setting it in the state?
           dispatch(signinSuccess(result));
+          // localStorage.setItem('userToken', result.credential.data.token);
           dispatch(routerActions.navigateTo(DASHBOARD_ROUTE.name));
           dispatch(asyncRequestFinished());
         })
