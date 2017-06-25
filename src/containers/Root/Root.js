@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { routeNodeSelector } from 'redux-router5';
@@ -10,36 +10,25 @@ import './reset.css'; // some more rules to fix default behaviour
 import 'semantic-ui-css/semantic.css';
 /* eslint-enable import/first */
 
-import { SIGNIN_ROUTE, SIGNUP_ROUTE } from '../../data/routes';
+import { SIGNUP_ROUTE } from '../../data/routes';
 import * as authSelectors from '../../data/auth/selectors';
 import App from '../../components/App/App';
 import Signin from '../../containers/Signin/Signin';
 import Signup from '../../components/Signup/Signup';
 
-class Root extends Component {
-  constructor(props, context) {
-    super(props);
-    this.router = context.router;
+const Root = ({ route, isSignedin }) => {
+  const matches = startsWithSegment(route.name);
+
+  if (isSignedin) {
+    return <App />;
   }
 
-  render() {
-    const { route, isSignedin } = this.props;
-    const matches = startsWithSegment(route.name);
-
-    if (isSignedin) {
-      if (matches(SIGNUP_ROUTE.name) || matches(SIGNIN_ROUTE.name)) {
-        this.router.navigate('dashboard');
-      }
-      return <App />;
-    }
-
-    if (matches(SIGNUP_ROUTE.name)) {
-      return <Signup />;
-    }
-
-    return <Signin />;
+  if (matches(SIGNUP_ROUTE.name)) {
+    return <Signup />;
   }
-}
+
+  return <Signin />;
+};
 
 Root.propTypes = {
   route: PropTypes.shape({
@@ -50,12 +39,6 @@ Root.propTypes = {
 
 Root.defaultProps = {
   isSignedin: false,
-};
-
-Root.contextTypes = {
-  router: PropTypes.shape({
-    navigate: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
 const mapStateToProps = state => {

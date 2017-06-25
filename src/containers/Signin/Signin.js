@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
 import SigninLayout from '../../components/SigninLayout/SigninLayout';
-import { signinRequest } from '../../data/auth/actions';
+import { signin } from '../../data/auth/actions';
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = {
-  handleSignin: signinRequest,
+  handleSignin: signin,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SigninLayout);

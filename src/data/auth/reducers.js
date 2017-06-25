@@ -17,7 +17,7 @@ const reducer = (state = initialState, { type, payload } = {}) => {
     }
 
     case SIGNIN_FAILURE: {
-      return { ...state, requesting: false };
+      return { ...state, requesting: false, error: payload.error };
     }
 
     default: {
