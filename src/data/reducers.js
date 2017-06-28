@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import { router5Reducer } from 'redux-router5';
 
-import uiReducer from './ui/reducers';
 import authReducer from './auth/reducers';
+import propertiesReducer from './properties/reducers';
+import uiReducer from './ui/reducers';
 
 export default combineReducers({
-  router: router5Reducer,
   auth: authReducer,
+  properties: propertiesReducer,
+  router: router5Reducer,
   ui: uiReducer,
 });

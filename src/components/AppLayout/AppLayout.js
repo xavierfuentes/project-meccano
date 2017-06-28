@@ -1,9 +1,10 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
 
 import NavBar from '../../components/NavBar/NavBar';
 import Main from '../../containers/Main/Main';
 
-const Root = () =>
+const AppLayout = () =>
   <div>
     <aside>
       <NavBar />
@@ -14,4 +15,8 @@ const Root = () =>
     </main>
   </div>;
 
-export default Root;
+AppLayout.propTypes = {};
+
+AppLayout.defaultProps = {};
+
+export default AppLayout;

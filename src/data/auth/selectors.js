@@ -1,3 +1,6 @@
-export const auth = state => state.auth;
-export const currentUser = state => state.auth.user;
-export const isSignedin = state => state.auth.user && !!state.auth.user.uid;
+import { createSelector } from 'reselect';
+
+const authState = state => state.auth;
+
+export const getCurrentUser = createSelector(authState, state => state.user);
+export const isSignedin = createSelector(getCurrentUser, user => user && !!user.uid);

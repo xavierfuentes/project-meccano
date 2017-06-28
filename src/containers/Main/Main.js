@@ -6,7 +6,7 @@ import { startsWithSegment } from 'router5.helpers';
 
 import NotFound from '../../components/NotFound/NotFound';
 import Dashboard from '../../components/Dashboard/Dashboard';
-import Properties from '../../components/Properties/Properties';
+import Properties from '../../containers/Properties/Properties';
 
 const Main = ({ route }) => {
   const matches = startsWithSegment(route.name);
